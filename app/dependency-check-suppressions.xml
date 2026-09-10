@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OWASP Dependency-Check suppressions. Each entry must state why the finding does not apply
+     to the shipped APK. Anything not listed here still fails the build at CVSS >= 7.0. -->
+<suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.3.xsd">
+    <suppress>
+        <notes><![CDATA[
+        CVE-2026-53914 is unsafe deserialization in the Kotlin *build cache metadata*, i.e. the
+        Kotlin compiler / Gradle build tooling (fixed in Kotlin 2.4.20). Dependency-Check matches it
+        by the broad CPE "jetbrains:kotlin" to the runtime kotlin-stdlib jars, which contain no build
+        cache code. Not reachable in the APK. Revisit when the toolchain moves to Kotlin >= 2.4.20.
+        ]]></notes>
+        <packageUrl regex="true">^pkg:maven/org\.jetbrains\.kotlin/kotlin-stdlib.*@.*$</packageUrl>
+        <cve>CVE-2026-53914</cve>
+    </suppress>
+    <suppress>
+        <notes><![CDATA[
+        CVE-2024-7254 (protobuf-javalite 3.21.8) is detected inside compose-ui's inspector.jar, the
+        Android Studio Layout Inspector agent bundled in the AAR. Inspector jars are consumed by the
+        IDE and are not packaged into the APK; the app does not parse protobuf data.
+        ]]></notes>
+        <packageUrl regex="true">^pkg:maven/com\.google\.protobuf/protobuf-javalite@.*$</packageUrl>
+        <cve>CVE-2024-7254</cve>
+    </suppress>
+</suppressions>

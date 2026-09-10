@@ -3,6 +3,7 @@ import java.util.Properties
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.plugin.compose")
+    id("org.owasp.dependencycheck")
 }
 
 val versionPropsFile = rootProject.file("version.properties")
@@ -74,7 +75,16 @@ android {
     testOptions {
         unitTests {
             isReturnDefaultValues = true
+            isIncludeAndroidResources = true
         }
+    }
+
+    lint {
+        sarifReport = true
+        // Pre-existing findings are recorded here so CI fails only on new ones
+        baseline = file("lint-baseline.xml")
+        // These Compose lint checks (bundled with BOM 2023.10.01) crash with an NPE inside AGP 9 lint
+        disable += listOf("MutableCollectionMutableState", "AutoboxingStateCreation")
     }
 }
 
@@ -99,4 +109,17 @@ dependencies {
 
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
+    testImplementation("org.robolectric:robolectric:4.16.1")
+}
+
+dependencyCheck {
+    // Only what ships in the release APK; avoids resolving Android's internal configurations
+    scanConfigurations = listOf("releaseRuntimeClasspath")
+    formats = listOf("HTML", "SARIF")
+    outputDirectory = layout.buildDirectory.dir("reports/dependency-check")
+    failBuildOnCVSS = 7.0f // fail on High and Critical
+    suppressionFile = file("dependency-check-suppressions.xml").path // documented false positives
+    nvd {
+        apiKey = providers.environmentVariable("NVD_API_KEY")
+    }
 }

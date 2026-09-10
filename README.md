@@ -85,6 +85,9 @@ See **[docs/testing.md](docs/testing.md)** for what is tested, how to run unit t
 **Test coverage:**
 - Hostname/IP validation logic (`DnsManagerTest.kt`)
 - Debug logging system (`DebugLoggerTest.kt`)
+- Private DNS settings, toggle and saved hostname (`DnsManagerSettingsTest.kt`, Robolectric)
+
+Continuous integration (tests, lint, release build and OWASP dependency vulnerability scan) runs on every pull request via GitHub Actions; see [docs/testing.md](docs/testing.md#continuous-integration).
 
 ## Requirements
 

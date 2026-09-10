@@ -6,6 +6,10 @@ All notable changes to PrivDNS Toggle will be documented in this file.
 
 ### Added
 - **Grant with Shizuku** - one-time in-app grant of `WRITE_SECURE_SETTINGS` through a Shizuku user service, for devices without access to a computer. The ADB command remains supported.
+- **CI pipeline** - GitHub Actions run unit and Robolectric regression tests, Android Lint, a release build and OWASP Dependency-Check on every pull request.
+
+### Fixed
+- **Quick Settings tile on Android 9** - the tile service no longer calls `Tile.setSubtitle` (API 29) on API 28 devices, which crashed the tile; the subtitle is simply omitted there.
 
 ## [0.4.1] - 2026-02-12
 
