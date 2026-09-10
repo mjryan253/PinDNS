@@ -4,6 +4,12 @@
 
 A minimal Android app to toggle Private DNS on and off — from the Quick Settings shade or the app itself.
 
+[<img src="docs/images/badge_obtainium.png" alt="Get it on Obtainium" height="80">](https://apps.obtainium.imranr.dev/redirect?r=obtainium://app/%7B%22id%22%3A%22com.privdnstoggle.app%22%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2Fmjryan253%2FPrivDNSToggle%22%2C%22author%22%3A%22mjryan253%22%2C%22name%22%3A%22PrivDNS%20Toggle%22%7D)
+
+[![Latest release](https://img.shields.io/github/v/release/mjryan253/PrivDNSToggle?logo=github)](https://github.com/mjryan253/PrivDNSToggle/releases/latest) [![Downloads](https://img.shields.io/github/downloads/mjryan253/PrivDNSToggle/total?logo=github)](https://github.com/mjryan253/PrivDNSToggle/releases) [![CI](https://github.com/mjryan253/PrivDNSToggle/actions/workflows/ci.yml/badge.svg)](https://github.com/mjryan253/PrivDNSToggle/actions/workflows/ci.yml) [![Dependency Check](https://github.com/mjryan253/PrivDNSToggle/actions/workflows/dependency-check.yml/badge.svg)](https://github.com/mjryan253/PrivDNSToggle/actions/workflows/dependency-check.yml)
+
+[![Supported by Shizuku](https://img.shields.io/badge/Supported%20by-Shizuku-blue)](https://shizuku.rikka.app) [![Tested on Samsung Galaxy devices](https://img.shields.io/badge/Tested%20on-Samsung%20Galaxy%20devices-1428A0)](#requirements) [![Android 9+](https://img.shields.io/badge/Android-9%2B%20%28API%2028%29-3DDC84?logo=android&logoColor=white)](#requirements) [![Kotlin](https://img.shields.io/badge/Kotlin-7F52FF?logo=kotlin&logoColor=white)](https://kotlinlang.org) [![Jetpack Compose](https://img.shields.io/badge/Jetpack%20Compose-Material%203-4285F4?logo=jetpackcompose&logoColor=white)](https://developer.android.com/compose)
+
 ## Features
 
 - **Quick Settings Tile** — pull down notification shade, tap to toggle Private DNS on/off
@@ -85,9 +91,31 @@ See **[docs/testing.md](docs/testing.md)** for what is tested, how to run unit t
 **Test coverage:**
 - Hostname/IP validation logic (`DnsManagerTest.kt`)
 - Debug logging system (`DebugLoggerTest.kt`)
+- Private DNS settings, toggle and saved hostname (`DnsManagerSettingsTest.kt`, Robolectric)
+
+Continuous integration (tests, lint, release build and OWASP dependency vulnerability scan) runs on every pull request via GitHub Actions; see [docs/testing.md](docs/testing.md#continuous-integration).
 
 ## Requirements
 
 - Android 9+ (API 28)
 - One-time permission grant via ADB or Shizuku
 - Internet connection (for DNS connection testing during setup)
+- Officially supported on the Samsung Galaxy line of devices (our test hardware); other devices have worked well but are not officially supported
+
+## Verifying the APK
+
+Release APKs are signed with the project's release key. Its certificate SHA-256 fingerprint is:
+
+```
+5344da60b330aca1109d26bac272f437d72c9a1a456aa1c9b7ea9c587ce19289
+```
+
+Check a downloaded APK with `apksigner verify --print-certs PrivDNSToggle-vX.Y.apk` (from the Android SDK build-tools) and compare the digest. Versions up to 0.4.1 were signed with a different key: uninstall them before installing 0.5 or later, then grant the permission again.
+
+## About the Project
+
+I'm a single developer with over 20 years of IT experience, and PrivDNS Toggle is a side project I'm happy to give back to the community. Testing and feedback are appreciated: please open an [issue](https://github.com/mjryan253/PrivDNSToggle/issues) with bug reports or suggestions. The goal is a **v1.0 release in Q4 2026**.
+
+## Support the Development
+
+If PrivDNS Toggle is useful to you, you can support continued work on the project with a donation via [PayPal](https://paypal.me/mryan351).

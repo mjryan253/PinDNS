@@ -1,0 +1,58 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+    steps:
+      - uses: actions/checkout@v7
+
+      # Matches gradle/gradle-daemon-jvm.properties (JetBrains 21) so Gradle does not provision a second JDK
+      - uses: actions/setup-java@v6
+        with:
+          distribution: jetbrains
+          java-version: 21
+
+      - uses: gradle/actions/setup-gradle@v6
+
+      # --continue runs all three even if tests fail, so the reports below still upload
+      - name: Unit tests, lint, release build
+        run: ./gradlew --continue :app:testDebugUnitTest :app:lintDebug :app:assembleRelease
+
+      - name: Upload test and lint reports
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: reports
+          path: |
+            builds/app/test-results/testDebugUnitTest/*.xml
+            builds/app/reports/tests/testDebugUnitTest/
+            builds/app/reports/lint-results-debug.*
+
+      # Shows lint findings in Security > Code scanning and as PR annotations
+      - name: Upload lint SARIF to code scanning
+        if: ${{ !cancelled() }}
+        continue-on-error: true
+        uses: github/codeql-action/upload-sarif@v4
+        with:
+          sarif_file: builds/app/reports/lint-results-debug.sarif
+          category: android-lint
+
+      # Unsigned on CI (no keystore); this only proves the minified build succeeds
+      - name: Upload release APK
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: app-release
+          path: builds/app/outputs/apk/release/*.apk

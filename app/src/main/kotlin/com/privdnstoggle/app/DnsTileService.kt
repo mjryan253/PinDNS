@@ -1,5 +1,6 @@
 package com.privdnstoggle.app
 
+import android.os.Build
 import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
 import android.widget.Toast
@@ -30,10 +31,13 @@ class DnsTileService : TileService() {
         val active = DnsManager.isActive(contentResolver)
 
         tile.state = if (active) Tile.STATE_ACTIVE else Tile.STATE_INACTIVE
-        tile.subtitle = if (active) {
-            DnsManager.getCurrentHostname(contentResolver)
-        } else {
-            "Off"
+        // Tile.setSubtitle exists from API 29; minSdk is 28
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            tile.subtitle = if (active) {
+                DnsManager.getCurrentHostname(contentResolver)
+            } else {
+                "Off"
+            }
         }
         tile.updateTile()
     }
