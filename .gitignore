@@ -45,6 +45,9 @@ captures/
 *.jks
 *.keystore
 keystore.properties
+# Release signing identity - the keystore is a private key: BACK IT UP, never commit it.
+# Updates must be signed with the same key or Android refuses to install them.
+.signing/
 
 # External native build folder generated in Android Studio 2.2 and later
 .externalNativeBuild

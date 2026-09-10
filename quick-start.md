@@ -2,6 +2,8 @@
 
 Get PrivDNS Toggle built and running on your physical Android device in minutes.
 
+> **Don't want to build it yourself?** Add `https://github.com/mjryan253/PrivDNSToggle` as a source in [Obtainium](https://github.com/ImranR98/Obtainium) (or tap the **Get it on Obtainium** badge in the [README](README.md)) to install the latest release APK and receive updates. Then skip to [Step 4](#step-4-grant-required-permission) to grant the permission, via ADB or on-device with Shizuku (4.3).
+
 ## Prerequisites
 
 Before you begin, ensure you have:
@@ -258,9 +260,9 @@ The result is the same as the ADB command: the grant persists across app updates
 
 ## Versioning and releases
 
-- **Version source:** The app version is defined in `version.properties` in the repo root (`VERSION_NAME`, `VERSION_CODE`). Bump these (and update [CHANGELOG.md](CHANGELOG.md)) when cutting a release.
-- **Tag convention:** Push tag **`beta/v*`** (e.g. `beta/v0.3.1`) to publish a **beta** (prerelease). Push tag **`v*`** (e.g. `v0.4`) **from the main branch only** to publish a **production** release. Full releases are only allowed from `main`.
-- See [docs/release-workflow.md](docs/release-workflow.md) for the planned workflow (GitHub Actions workflows are planned but not yet implemented).
+- **Version source:** The app version is defined in `version.properties` in the repo root (`VERSION_NAME`, `VERSION_CODE`). Bump both, add the matching `## [x.y]` section to [CHANGELOG.md](CHANGELOG.md), and merge that PR to `main`.
+- **Publishing:** The `publish` GitHub Actions workflow runs on every push to `main`. When `version.properties` names a version that has no GitHub Release yet, it runs the tests, builds and signs the APK with the release key, creates the `v<version>` tag and publishes the Release with the CHANGELOG section as its notes. Merges that don't bump the version are a no-op.
+- See [docs/release-workflow.md](docs/release-workflow.md) for the full flow, the signing key and the required repository secrets.
 
 ## Need More Help?
 

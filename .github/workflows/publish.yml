@@ -1,0 +1,136 @@
+# Publishes a release when a version bump lands on main: the signed APK onto a GitHub Release,
+# with the v<version> tag minted here at the merge commit. The gate makes every other merge
+# (docs, CI, refactors) a no-op, and a version that already has a release is never rebuilt or
+# overwritten, so re-runs are safe.
+#
+# The tag is created BY this workflow, not pushed by hand: tags pushed with the workflow's own
+# GITHUB_TOKEN would not trigger a tag-triggered workflow (GitHub's recursion guard).
+#
+# Signing: the release keystore lives in the ANDROID_KEYSTORE_B64 / ANDROID_KEYSTORE_PASS
+# repository secrets and must stay the same key forever, or updates stop installing over
+# existing installs. The signed APK is checked against the pinned certificate fingerprint below.
+name: publish
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publish-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  # SHA-256 of the release signing certificate (also in README.md). A mismatch aborts the publish.
+  EXPECTED_CERT_SHA256: 5344da60b330aca1109d26bac272f437d72c9a1a456aa1c9b7ea9c587ce19289
+
+jobs:
+  # Reads the version from version.properties and publishes only if v<version> has no release yet.
+  gate:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.v.outputs.version }}
+      publish: ${{ steps.v.outputs.publish }}
+    steps:
+      - uses: actions/checkout@v7
+      - id: v
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          V=$(sed -n 's/^VERSION_NAME=//p' version.properties | tr -d '[:space:]')
+          [ -n "$V" ] || { echo "could not read VERSION_NAME from version.properties"; exit 1; }
+          echo "version=$V" >> "$GITHUB_OUTPUT"
+          if gh release view "v$V" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "v$V is already released - nothing to publish."
+            echo "publish=false" >> "$GITHUB_OUTPUT"
+          else
+            # The release body is built from this section, so a missing one means a release
+            # with no notes. Fail here, before anything is built, tagged or signed. awk on the
+            # second field, not grep: the dots and brackets in "[0.5]" are regex metacharacters,
+            # and this must agree exactly with the extraction in the apk job.
+            awk -v v="[$V]" '$1 == "##" && $2 == v { found = 1; exit } END { exit !found }' CHANGELOG.md || {
+              echo "CHANGELOG.md has no '## [$V]' section - add one first."
+              exit 1
+            }
+            echo "v$V has no release yet - publishing."
+            echo "publish=true" >> "$GITHUB_OUTPUT"
+          fi
+
+  apk:
+    needs: gate
+    if: needs.gate.outputs.publish == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+
+      # Matches gradle/gradle-daemon-jvm.properties (JetBrains 21), same as ci.yml
+      - uses: actions/setup-java@v6
+        with:
+          distribution: jetbrains
+          java-version: 21
+
+      - uses: gradle/actions/setup-gradle@v6
+
+      # zipalign and apksigner; sdkmanager is not on PATH on the runner
+      - name: Install build-tools
+        run: |
+          "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "build-tools;36.0.0"
+
+      # Tests run again in the job that signs, so a release can never be cut from a commit
+      # whose tests did not run here. The APK is unsigned: no keystore.properties on the runner.
+      - name: Unit tests and unsigned release build
+        run: ./gradlew --console=plain :app:testDebugUnitTest :app:assembleRelease
+
+      - name: Sign
+        env:
+          KEYSTORE_B64: ${{ secrets.ANDROID_KEYSTORE_B64 }}
+          KS_PASS: ${{ secrets.ANDROID_KEYSTORE_PASS }}
+          VERSION: ${{ needs.gate.outputs.version }}
+        run: |
+          [ -n "$KEYSTORE_B64" ] || { echo "ANDROID_KEYSTORE_B64 secret is not set"; exit 1; }
+          [ -n "$KS_PASS" ] || { echo "ANDROID_KEYSTORE_PASS secret is not set"; exit 1; }
+          printf '%s' "$KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/release.keystore"
+          BT="$ANDROID_HOME/build-tools/36.0.0"
+          APK="PrivDNSToggle-v${VERSION}.apk"
+          "$BT/zipalign" -f -p 4 builds/app/outputs/apk/release/app-release-unsigned.apk "$RUNNER_TEMP/aligned.apk"
+          "$BT/apksigner" sign --ks "$RUNNER_TEMP/release.keystore" --ks-key-alias privdnstoggle \
+            --ks-pass env:KS_PASS --out "$APK" "$RUNNER_TEMP/aligned.apk"
+          rm -f "$RUNNER_TEMP/release.keystore" "$APK.idsig"
+          "$BT/apksigner" verify --print-certs "$APK"
+          ACTUAL=$("$BT/apksigner" verify --print-certs "$APK" | sed -n 's/.*SHA-256 digest: //p' | head -n1)
+          [ "$ACTUAL" = "$EXPECTED_CERT_SHA256" ] || {
+            echo "signing certificate mismatch: got $ACTUAL, expected $EXPECTED_CERT_SHA256"
+            exit 1
+          }
+          echo "APK=$APK" >> "$GITHUB_ENV"
+
+      # The release notes are the version's own CHANGELOG section, verbatim: everything after
+      # the matching '## [x.y]' heading up to the next '## ' heading.
+      - name: Build the release body from CHANGELOG.md
+        env:
+          VERSION: ${{ needs.gate.outputs.version }}
+        run: |
+          awk -v v="[$VERSION]" '/^## /{ if (hit) exit; if ($2 == v) { hit = 1; next } } hit' \
+            CHANGELOG.md > "$RUNNER_TEMP/release-body.md"
+          grep -q '[^[:space:]]' "$RUNNER_TEMP/release-body.md" || {
+            echo "CHANGELOG.md has a '## [$VERSION]' heading but no content under it."
+            exit 1
+          }
+          cat >> "$RUNNER_TEMP/release-body.md" <<FOOTER
+
+          ---
+
+          Sideload the APK below, or track this repo in [Obtainium](https://github.com/ImranR98/Obtainium).
+          Signing certificate SHA-256: \`$EXPECTED_CERT_SHA256\` (check with \`apksigner verify --print-certs\`).
+          FOOTER
+
+      - uses: softprops/action-gh-release@v3
+        with:
+          tag_name: v${{ needs.gate.outputs.version }}
+          files: ${{ env.APK }}
+          body_path: ${{ runner.temp }}/release-body.md

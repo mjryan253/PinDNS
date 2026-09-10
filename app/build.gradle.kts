@@ -36,22 +36,15 @@ android {
                 storePassword = props["storePassword"] as String
                 keyAlias = props["keyAlias"] as String
                 keyPassword = props["keyPassword"] as String
-            } else {
-                // Fall back to debug keystore so the APK is always signed & installable
-                val debugKs = File(System.getProperty("user.home"), ".android/debug.keystore")
-                if (debugKs.exists()) {
-                    storeFile = debugKs
-                    storePassword = "android"
-                    keyAlias = "androiddebugkey"
-                    keyPassword = "android"
-                }
             }
         }
     }
 
     buildTypes {
         release {
-            signingConfig = signingConfigs.getByName("release")
+            // Signed only when keystore.properties exists; otherwise unsigned (CI), and the
+            // publish workflow signs the APK with apksigner
+            signingConfig = signingConfigs.getByName("release").takeIf { it.storeFile != null }
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(
