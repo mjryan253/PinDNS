@@ -1,6 +1,6 @@
 # Testing
 
-This document describes how testing is set up for PrivDNS Toggle and how to run the tests.
+This document describes how testing is set up for PinDNS and how to run the tests.
 
 ## What is tested
 
@@ -72,7 +72,7 @@ You can also open either test file, then click the run icon in the gutter next t
 2. **Mark test folder as test source** — In the **Project** view, right-click `app/src/test` → **Mark Directory as** → **Test Sources Root**. The `test` folder should turn green.
 3. **Rebuild** — **Build → Rebuild Project**.
 4. **Invalidate caches** — **File → Invalidate Caches…** → **Invalidate and Restart**. After restart, sync Gradle again and open `DnsManagerTest.kt`; the run icon should appear in the gutter next to the class name and each `@Test` method.
-5. **Run via Gradle** — If the run icon still doesn't appear, run tests from the command line (see below) or from **View → Tool Windows → Gradle** → expand **PrivDNSToggle → app → Tasks → verification** → double-click **testDebugUnitTest**.
+5. **Run via Gradle** — If the run icon still doesn't appear, run tests from the command line (see below) or from **View → Tool Windows → Gradle** → expand **PinDNS → app → Tasks → verification** → double-click **testDebugUnitTest**.
 
 The test class uses `@RunWith(JUnit4::class)` so the IDE treats it as a JUnit 4 test. If you see lint or "invalid" on the test file, confirm that `testImplementation` for `junit:junit` and `kotlin-test-junit` are in `app/build.gradle.kts` and that Gradle sync completed without errors.
 

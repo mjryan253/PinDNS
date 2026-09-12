@@ -1,4 +1,4 @@
-# Troubleshooting PrivDNS Toggle
+# Troubleshooting PinDNS
 
 If the app crashes on launch, won't deploy to your device, or doesn't apply Private DNS after granting permission, use these steps to narrow it down.
 
@@ -14,7 +14,7 @@ If the build succeeds but you see **Error running 'app' — device '…' not fou
 4. **Refresh in Android Studio:** use **Run > Select Device** (or the device dropdown) and pick your device once it appears. Then run the app again.
 5. **Install the APK manually:** the build already produced an APK. You can install it without the IDE:
    ```bash
-   adb install -r app\build\outputs\apk\debug\app-debug.apk
+   adb install -r builds/app/outputs/apk/debug/app-debug.apk
    ```
    (Use forward slashes on macOS/Linux.) Then open the app on the device. Grant WRITE_SECURE_SETTINGS via ADB as in section 2 below.
 
@@ -37,11 +37,11 @@ With the device connected over USB and USB debugging enabled:
    ```
    Or stream and filter for the app and crashes:
    ```bash
-   adb logcat -s "AndroidRuntime:E" "*:E" | findstr /i privdnstoggle
+   adb logcat -s AndroidRuntime:E DnsManager ShizukuHelper MainActivity
    ```
-   On macOS/Linux use `grep` instead of `findstr`:
+   Or dump and filter it (use `findstr` instead of `grep` on Windows):
    ```bash
-   adb logcat -d | grep -i -E "privdnstoggle|FATAL|AndroidRuntime"
+   adb logcat -d | grep -i -E "DnsManager|ShizukuHelper|MainActivity|FATAL|AndroidRuntime"
    ```
 
 4. Look for:
@@ -83,7 +83,7 @@ Replace `150` with the userId that showed `granted=false`. To list users: `adb s
 **No computer?** If [Shizuku](https://shizuku.rikka.app) is installed and running, open the app, expand **Setup Instructions**, and tap **Grant with Shizuku** instead of running the ADB command. Notes:
 
 - Shizuku must be started again after each reboot unless the device is rooted. If the app says "Shizuku is not running", start it in the Shizuku app and tap the button again.
-- If you chose "Deny and don't ask again" in the Shizuku dialog, allow PrivDNS Toggle in Shizuku's list of authorized apps, then tap the button again.
+- If you chose "Deny and don't ask again" in the Shizuku dialog, allow PinDNS in Shizuku's list of authorized apps, then tap the button again.
 - The Shizuku grant targets the user/profile the app is running in, so the `--user` step above is not needed with Shizuku.
 
 ---
@@ -139,7 +139,7 @@ Samsung Galaxy S21+ (and other Samsung devices) may crash when setting custom DN
    ```bash
    adb logcat -c
    # Then reproduce the crash
-   adb logcat -d | grep -i -E "privdnstoggle|DnsManager|FATAL"
+   adb logcat -d | grep -i -E "DnsManager|ShizukuHelper|MainActivity|FATAL"
    ```
 
 3. **Temporarily Disabled Validation:** DNS syntax validation has been temporarily commented out to rule it out as a cause. If crashes persist, the issue is likely in `enableDns()` when calling `Settings.Global.putString()`.

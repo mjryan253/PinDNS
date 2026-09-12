@@ -1,22 +1,22 @@
 <div align="center">
 
-<img src="filter-icon.png" alt="PrivDNS Toggle icon" width="160">
+<img src="filter-icon.png" alt="PinDNS icon" width="160">
 
-<h1>PrivDNS Toggle</h1>
+<h1>PinDNS</h1>
 <br/>
 
-[![Latest release](https://img.shields.io/github/v/release/mjryan253/PrivDNSToggle?style=for-the-badge&color=green)](https://github.com/mjryan253/PrivDNSToggle/releases/latest)
-[![Downloads](https://img.shields.io/github/downloads/mjryan253/PrivDNSToggle/total?style=for-the-badge&color=lightgreen)](https://github.com/mjryan253/PrivDNSToggle/releases)
+[![Latest release](https://img.shields.io/github/v/release/mjryan253/PinDNS?style=for-the-badge&color=green)](https://github.com/mjryan253/PinDNS/releases/latest)
+[![Downloads](https://img.shields.io/github/downloads/mjryan253/PinDNS/total?style=for-the-badge&color=lightgreen)](https://github.com/mjryan253/PinDNS/releases)
 [![License](https://img.shields.io/badge/License-GPL--3.0-blue?style=for-the-badge)](LICENSE)
-[![CI](https://img.shields.io/github/actions/workflow/status/mjryan253/PrivDNSToggle/ci.yml?style=for-the-badge&label=CI)](https://github.com/mjryan253/PrivDNSToggle/actions/workflows/ci.yml)
-[![Dependency Check](https://img.shields.io/github/actions/workflow/status/mjryan253/PrivDNSToggle/dependency-check.yml?style=for-the-badge&label=Dependency%20Check)](https://github.com/mjryan253/PrivDNSToggle/actions/workflows/dependency-check.yml)
+[![CI](https://img.shields.io/github/actions/workflow/status/mjryan253/PinDNS/ci.yml?style=for-the-badge&label=CI)](https://github.com/mjryan253/PinDNS/actions/workflows/ci.yml)
+[![Dependency Check](https://img.shields.io/github/actions/workflow/status/mjryan253/PinDNS/dependency-check.yml?style=for-the-badge&label=Dependency%20Check)](https://github.com/mjryan253/PinDNS/actions/workflows/dependency-check.yml)
 [![Android 9+](https://img.shields.io/badge/Android-9%2B%20%28API%2028%29-3DDC84?style=for-the-badge&logo=android&logoColor=white)](#requirements)
 
 </div>
 
 ## Intro
 
-PrivDNS Toggle is a minimal Android app that turns Private DNS on and off from the Quick Settings shade or
+PinDNS is a minimal Android app that turns Private DNS on and off from the Quick Settings shade or
 from the app itself. It writes Android's own Private DNS setting directly: no root, no background services,
 no analytics.
 
@@ -24,7 +24,7 @@ no analytics.
 
 | Private DNS off | Private DNS on |
 |:---:|:---:|
-| <img src="docs/images/screenshots/screen_off.png" alt="PrivDNS Toggle main screen with Private DNS off: the large switch sits at OFF above the DNS provider field and Save button" width="300"> | <img src="docs/images/screenshots/screen_on.png" alt="PrivDNS Toggle main screen with Private DNS active: the switch is green and set to ON, with the saved hostname dns.adguard.com shown above it" width="300"> |
+| <img src="docs/images/screenshots/screen_off.png" alt="PinDNS main screen with Private DNS off: the large switch sits at OFF above the DNS provider field and Save button" width="300"> | <img src="docs/images/screenshots/screen_on.png" alt="PinDNS main screen with Private DNS active: the switch is green and set to ON, with the saved hostname dns.adguard.com shown above it" width="300"> |
 
 <img src="docs/images/screenshots/quick_settings.png" alt="Android Quick Settings tile panel with the Private DNS funnel tile lit up as active in the bottom right corner" width="615">
 
@@ -33,11 +33,11 @@ The Quick Settings tile, bottom right, shown active. One tap toggles it.
 ## Download
 
 > [!NOTE]
-> PrivDNS Toggle requires Android 9 or newer and a one-time permission grant via ADB or Shizuku.
+> PinDNS requires Android 9 or newer and a one-time permission grant via ADB or Shizuku.
 > See [Requirements](#requirements) and [Setup](#setup).
 
-[<img src="docs/images/badge_github.png" alt="Get it on GitHub" height="80">](https://github.com/mjryan253/PrivDNSToggle/releases/latest)
-[<img src="docs/images/badge_obtainium.png" alt="Get it on Obtainium" height="80">](https://apps.obtainium.imranr.dev/redirect?r=obtainium://app/%7B%22id%22%3A%22com.privdnstoggle.app%22%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2Fmjryan253%2FPrivDNSToggle%22%2C%22author%22%3A%22mjryan253%22%2C%22name%22%3A%22PrivDNS%20Toggle%22%7D)
+[<img src="docs/images/badge_github.png" alt="Get it on GitHub" height="80">](https://github.com/mjryan253/PinDNS/releases/latest)
+[<img src="docs/images/badge_obtainium.png" alt="Get it on Obtainium" height="80">](https://apps.obtainium.imranr.dev/redirect?r=obtainium://app/%7B%22id%22%3A%22com.privdnstoggle.app%22%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2Fmjryan253%2FPinDNS%22%2C%22author%22%3A%22mjryan253%22%2C%22name%22%3A%22PinDNS%22%7D)
 
 ### Verifying the APK
 
@@ -47,7 +47,7 @@ Release APKs are signed with the project's release key. Its certificate SHA-256 
 5344da60b330aca1109d26bac272f437d72c9a1a456aa1c9b7ea9c587ce19289
 ```
 
-Check a downloaded APK with `apksigner verify --print-certs PrivDNSToggle-vX.Y.apk` (from the Android SDK
+Check a downloaded APK with `apksigner verify --print-certs PinDNS-vX.Y.apk` (from the Android SDK
 build-tools) and compare the digest. Versions up to 0.4.1 were signed with a different key: uninstall them
 before installing 0.5 or later, then grant the permission again.
 
@@ -55,7 +55,7 @@ before installing 0.5 or later, then grant the permission again.
 
 ### Grant the Permission (one time)
 
-PrivDNS Toggle writes Android's Private DNS system setting, which requires the `WRITE_SECURE_SETTINGS`
+PinDNS writes Android's Private DNS system setting, which requires the `WRITE_SECURE_SETTINGS`
 permission. Android does not offer this through a normal permission dialog; it must be granted via ADB or
 via Shizuku.
 
@@ -78,7 +78,7 @@ it automatically.
 
 If [Shizuku](https://shizuku.rikka.app) is installed and running on the phone:
 
-1. Open PrivDNS Toggle
+1. Open PinDNS
 2. Expand **Setup Instructions**
 3. Tap **Grant with Shizuku**
 
@@ -89,16 +89,24 @@ This runs the same grant on-device. See
 
 1. Pull down the notification shade fully
 2. Tap the pencil/edit icon to edit tiles
-3. Find **Private DNS** and drag it into your active tiles
+3. Find **PinDNS Toggle** and drag it into your active tiles
+
+### Optional: Pick a DNS Provider
+
+Private DNS needs a DNS-over-TLS hostname. Any provider works, for example `one.one.one.one` (Cloudflare)
+or `dns.adguard.com`. If you want filtering and a hostname of your own, [NextDNS](https://nextdns.io/?from=skn4pmg9)
+has a free tier; paste the hostname from your NextDNS setup page into the app and tap **Save**.
+
+> The NextDNS link above is a referral link. Signing up through it supports this project at no extra cost to you.
 
 ## Features
 
 | Feature | What it does |
 |---------|--------------|
-| **Quick Settings tile** | Tap **Private DNS** in the notification shade to toggle between your saved DNS hostname and off |
+| **Quick Settings tile** | Tap **PinDNS Toggle** in the notification shade to toggle between your saved DNS hostname and off |
 | **In-app toggle** | A large switch at the top of the app turns Private DNS on and off and shows the current status and active hostname |
 | **Any provider** | Enter a DNS hostname or IP address, for example `dns.nextdns.io` or `one.one.one.one` |
-| **DNS connection test** | **Save** tests the connection (10 s timeout) before storing the hostname and enabling Private DNS with it (syntax validation temporarily disabled) |
+| **DNS connection test** | **Save** tests the connection (10 s timeout) before storing the hostname; use the switch or the tile to turn Private DNS on (syntax validation temporarily disabled) |
 | **Shizuku support** | Grant the required permission in-app via Shizuku, no computer needed |
 | **Lightweight** | No background services, no analytics |
 | **Dark UI** | OLED-black Material 3 interface by default; dynamic color on Android 12+ |
@@ -139,8 +147,8 @@ step.
 | Gradle | Provided by the wrapper; no separate install |
 
 ```sh
-git clone https://github.com/mjryan253/PrivDNSToggle.git
-cd PrivDNSToggle
+git clone https://github.com/mjryan253/PinDNS.git
+cd PinDNS
 ./gradlew assembleDebug
 ```
 
@@ -160,7 +168,7 @@ Output: `builds/app/outputs/apk/debug/` (this project relocates Gradle output to
 ## Contributing
 
 Bug reports, device test reports and pull requests are welcome. Open an
-[issue](https://github.com/mjryan253/PrivDNSToggle/issues) for anything larger than a small fix. Run the
+[issue](https://github.com/mjryan253/PinDNS/issues) for anything larger than a small fix. Run the
 unit tests before opening a pull request:
 
 ```sh
@@ -191,27 +199,27 @@ scan on every pull request; see [docs/testing.md](docs/testing.md#continuous-int
 
 ## About the Project
 
-I'm a single developer with over 20 years of IT experience, and PrivDNS Toggle is a side project I'm happy to
+I'm a single developer with over 20 years of IT experience, and PinDNS is a side project I'm happy to
 give back to the community. Testing and feedback are appreciated: please open an
-[issue](https://github.com/mjryan253/PrivDNSToggle/issues) with bug reports or suggestions. The goal is a
+[issue](https://github.com/mjryan253/PinDNS/issues) with bug reports or suggestions. The goal is a
 **v1.0 release in Q4 2026**.
 
 ## Support the Development
 
-If PrivDNS Toggle is useful to you, you can support continued work on the project with a donation via
+If PinDNS is useful to you, you can support continued work on the project with a donation via
 [PayPal](https://paypal.me/mryan351).
 
 ## License
 
-PrivDNS Toggle is free software, licensed under the GNU General Public License v3.0 or later. See
+PinDNS is free software, licensed under the GNU General Public License v3.0 or later. See
 [LICENSE](LICENSE) for the full text.
 
 ## Disclaimer
 
-PrivDNS Toggle changes a system setting on your own device. It does not run a DNS service, proxy or VPN,
+PinDNS changes a system setting on your own device. It does not run a DNS service, proxy or VPN,
 and it does not choose a provider for you: the hostname you enter is written to Android's Private DNS
 setting as-is, so pick a provider you trust. The project is not affiliated with Google, Samsung, Shizuku
-or any DNS provider.
+or any DNS provider. The NextDNS link under Setup is a referral link; the app works with any provider.
 
 ## Table of Contents
 
@@ -223,6 +231,7 @@ or any DNS provider.
   - [Grant the Permission (one time)](#grant-the-permission-one-time)
   - [No Computer? Use Shizuku](#no-computer-use-shizuku)
   - [Add the Quick Settings Tile](#add-the-quick-settings-tile)
+  - [Optional: Pick a DNS Provider](#optional-pick-a-dns-provider)
 - [Features](#features)
 - [How It Works](#how-it-works)
 - [Requirements](#requirements)

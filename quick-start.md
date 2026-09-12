@@ -1,8 +1,8 @@
 # Quick Start Guide
 
-Get PrivDNS Toggle built and running on your physical Android device in minutes.
+Get PinDNS built and running on your physical Android device in minutes.
 
-> **Don't want to build it yourself?** Add `https://github.com/mjryan253/PrivDNSToggle` as a source in [Obtainium](https://github.com/ImranR98/Obtainium) (or tap the **Get it on Obtainium** badge in the [README](README.md)) to install the latest release APK and receive updates. Then skip to [Step 4](#step-4-grant-required-permission) to grant the permission, via ADB or on-device with Shizuku (4.3).
+> **Don't want to build it yourself?** Add `https://github.com/mjryan253/PinDNS` as a source in [Obtainium](https://github.com/ImranR98/Obtainium) (or tap the **Get it on Obtainium** badge in the [README](README.md)) to install the latest release APK and receive updates. Then skip to [Step 4](#step-4-grant-required-permission) to grant the permission, via ADB or on-device with Shizuku (4.3).
 
 ## Prerequisites
 
@@ -20,22 +20,22 @@ Before you begin, ensure you have:
 If you haven't already, clone or download this repository:
 
 ```bash
-git clone https://github.com/mjryan253/PrivDNSToggle
-cd PrivDNSToggle
+git clone https://github.com/mjryan253/PinDNS
+cd PinDNS
 ```
 
 ### 1.2 Open in Android Studio
 
 1. Launch **Android Studio**
 2. Select **File > Open** (or **Open** from the welcome screen)
-3. Navigate to and select the `PrivDNSToggle` folder
+3. Navigate to and select the `PinDNS` folder
 4. Click **OK**
 
 ### 1.3 Wait for Gradle Sync
 
 Android Studio will automatically start syncing Gradle dependencies. Wait for the sync to complete (you'll see "Gradle sync finished" in the status bar at the bottom).
 
-**First time setup?** Android Studio may download Gradle 8.4 and required dependencies. This can take several minutes depending on your internet connection.
+**First time setup?** Android Studio downloads the Gradle version pinned by the wrapper (currently 9.7.1) and the required dependencies. This can take several minutes depending on your internet connection.
 
 ## Step 2: Prepare Your Android Device
 
@@ -95,7 +95,7 @@ If you see `unauthorized`, check your device screen for the USB debugging prompt
 2. Wait for the build to complete
 3. When finished, click **locate** in the notification, or navigate to:
    ```
-   app/build/outputs/apk/debug/app-debug.apk
+   builds/app/outputs/apk/debug/app-debug.apk
    ```
 4. Transfer the APK to your device (via USB, email, or cloud storage)
 5. On your device, enable **Install from unknown sources** if prompted
@@ -103,7 +103,7 @@ If you see `unauthorized`, check your device screen for the USB debugging prompt
 
 ### Verify Installation
 
-Check that **PrivDNS Toggle** appears in your app drawer. You can open it, but it won't work yet until you grant the required permission in the next step.
+Check that **PinDNS** appears in your app drawer. You can open it, but it won't work yet until you grant the required permission in the next step.
 
 ## Step 4: Grant Required Permission
 
@@ -129,7 +129,7 @@ C:\Users\<YourUsername>\AppData\Local\Android\Sdk\platform-tools\adb.exe shell p
 You can verify the permission was granted by running:
 
 ```bash
-adb shell dumpsys package com.privdnstoggle.app | findstr WRITE_SECURE_SETTINGS
+adb shell dumpsys package com.privdnstoggle.app | grep WRITE_SECURE_SETTINGS
 ```
 
 **Windows users:** Use `findstr` instead of `grep`:
@@ -147,7 +147,7 @@ If you cannot use ADB from a computer, the app can grant the permission through 
 
 1. Install Shizuku from [Google Play](https://play.google.com/store/apps/details?id=moe.shizuku.privileged.api) or [GitHub](https://github.com/RikkaApps/Shizuku/releases)
 2. Start Shizuku by following its [setup guide](https://shizuku.rikka.app/guide/setup/) (on Android 11+ this works on-device via Wireless debugging; older versions need a one-time ADB start or root)
-3. Open **PrivDNS Toggle**, expand **Setup Instructions**, and tap **Grant with Shizuku**
+3. Open **PinDNS**, expand **Setup Instructions**, and tap **Grant with Shizuku**
 4. Allow the request in the Shizuku dialog
 
 The result is the same as the ADB command: the grant persists across app updates. Shizuku is only used for this step and does not need to keep running afterwards.
@@ -159,18 +159,18 @@ The result is the same as the ADB command: the grant persists across app updates
 1. Pull down the notification shade **fully** (swipe down twice)
 2. Look for a **pencil/edit icon** (usually in the bottom right or top right)
 3. Tap it to enter **Edit tiles** mode
-4. Scroll through available tiles and find **Private DNS**
-5. **Drag** the Private DNS tile into your active tiles area
+4. Scroll through available tiles and find **PinDNS Toggle**
+5. **Drag** the PinDNS Toggle tile into your active tiles area
 6. Tap **Done** or the back arrow to save
 
 ### 5.2 Configure DNS (First Time)
 
-1. Open the **PrivDNS Toggle** app from your app drawer
+1. Open the **PinDNS** app from your app drawer
 2. You'll see a large toggle switch at the top (currently OFF)
 3. Enter your desired DNS hostname or IP address in the input field below (e.g., `dns.nextdns.io`, `one.one.one.one`, `dns.cloudflare.com`)
 4. Tap **Save** — the app will:
    - Test the connection to port 853 (DNS-over-TLS) with a 10-second timeout
-   - Save the hostname and enable Private DNS with that hostname if successful
+   - Save the hostname if successful. Saving does not turn Private DNS on
    - Show an error message if connection fails
    - Note: Syntax validation is temporarily disabled
 5. Once saved, you can use the large toggle switch to turn Private DNS on/off
@@ -180,16 +180,16 @@ The result is the same as the ADB command: the grant persists across app updates
 ### Using the Quick Settings Tile
 
 - Pull down your notification shade
-- Tap the **Private DNS** tile to toggle between your saved DNS hostname and off
+- Tap the **PinDNS Toggle** tile to toggle between your saved DNS hostname and off
 - The tile will light up when Private DNS is active, and dim when it's off
 
 ### Using the App
 
-- Open **PrivDNS Toggle** to:
+- Open **PinDNS** to:
   - **Toggle Private DNS**: Use the large horizontal switch at the top to turn Private DNS on/off
   - **Change DNS Provider**: Enter a new hostname/IP in the input field and tap **Save**
     - Tests connectivity to the DNS provider (10-second timeout)
-    - Saves the hostname and enables Private DNS with that hostname if successful
+    - Saves the hostname if successful. Saving does not turn Private DNS on
     - Shows inline error messages if connection fails
     - Note: Syntax validation is temporarily disabled
   - **View Status**: See current Private DNS state and active hostname at the top
@@ -246,7 +246,7 @@ The result is the same as the ADB command: the grant persists across app updates
 - Check your internet connection
 - Go to **File > Settings > Build, Execution, Deployment > Gradle** and ensure "Use Gradle from" is set to the wrapper
 - Try **File > Invalidate Caches / Restart**
-- Ensure you have Java 17 installed (required by this project)
+- Any recent JDK can launch Gradle. The build pins its daemon to JDK 21 and downloads it automatically (`gradle/gradle-daemon-jvm.properties`); the code targets Java 17
 
 ### Build Fails
 
@@ -266,6 +266,6 @@ The result is the same as the ADB command: the grant persists across app updates
 
 ## Need More Help?
 
-- **Repository:** [https://github.com/mjryan253/PrivDNSToggle](https://github.com/mjryan253/PrivDNSToggle)
+- **Repository:** [https://github.com/mjryan253/PinDNS](https://github.com/mjryan253/PinDNS)
 - See the main [README.md](README.md) for technical details and how the app works
 - Check [docs/original-plan-idea.md](docs/original-plan-idea.md) for the original design concept

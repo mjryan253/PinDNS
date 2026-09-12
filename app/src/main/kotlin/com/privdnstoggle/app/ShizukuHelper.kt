@@ -50,7 +50,7 @@ object ShizukuHelper {
             if (Shizuku.checkSelfPermission() != PackageManager.PERMISSION_GRANTED) {
                 if (Shizuku.shouldShowRequestPermissionRationale()) {
                     DebugLogger.d(TAG, "grant: Shizuku permission permanently denied")
-                    return Result.failure(Exception("Shizuku permission was denied. Allow PrivDNS Toggle in the Shizuku app."))
+                    return Result.failure(Exception("Shizuku permission was denied. Allow PinDNS in the Shizuku app."))
                 }
                 if (!requestPermission()) {
                     DebugLogger.d(TAG, "grant: Shizuku permission denied by user")

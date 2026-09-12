@@ -11,7 +11,7 @@ Releases are published by the `publish` GitHub Actions workflow (`.github/workfl
 On the push to `main` the workflow runs two jobs:
 
 - **gate** reads `VERSION_NAME`. If `v<version>` already exists as a GitHub Release it stops, so docs and refactor merges are no-ops and re-runs are safe. Otherwise it requires the matching CHANGELOG section and continues.
-- **apk** runs the unit tests, builds the unsigned release APK, signs it with the release key from the repository secrets, checks the signing certificate against the pinned fingerprint, then creates the `v<version>` tag at the merge commit and the GitHub Release with `PrivDNSToggle-v<version>.apk` attached and the CHANGELOG section as its body.
+- **apk** runs the unit tests, builds the unsigned release APK, signs it with the release key from the repository secrets, checks the signing certificate against the pinned fingerprint, then creates the `v<version>` tag at the merge commit and the GitHub Release with `PinDNS-v<version>.apk` attached and the CHANGELOG section as its body.
 
 The `beta/v*` prerelease convention this document used to describe is retired; every published version is a full release.
 

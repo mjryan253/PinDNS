@@ -1,13 +1,17 @@
 # Renaming PrivDNS Toggle to PinDNS
 
-Record of the naming work done on 2026-09-11. The decision is made; the rename has **not** been applied. This document holds everything a later pass needs so the research does not have to be repeated.
+Record of the naming work done on 2026-09-11 and of the rename itself, applied on 2026-09-12. The research below is kept so it does not have to be repeated.
 
 ## Status
 
-- Future name: **PinDNS**
-- Applied: no. The app, repo, package and docs still use "PrivDNS Toggle".
-- Owner's preferred scope: display name, docs and GitHub repo rename (see [Scope options](#scope-options)).
-- Quick Settings tile label: not yet decided (see [Tile label options](#tile-label-options)).
+- Name: **PinDNS**
+- Applied: yes, on 2026-09-12.
+- Scope applied: display name, docs and GitHub repo rename (see [Scope options](#scope-options)), plus both optional follow-ups below.
+- Quick Settings tile label: **PinDNS Toggle** (see [Tile label options](#tile-label-options)).
+- Repository is now `mjryan253/PinDNS`; GitHub redirects the old URL. The repo description was updated.
+- Release APKs are now named `PinDNS-v<version>.apk`.
+- Unchanged, as planned: package ID `com.privdnstoggle.app`, keystore alias `privdnstoggle`, style `Theme.PrivDNSToggle`. Existing installs update in place and keep their `WRITE_SECURE_SETTINGS` grant.
+- Still open: register the free `pindns.*` domains, and run a manual USPTO TESS search before any store listing. Screenshots in `docs/images/screenshots/` still show the old name and need retaking.
 
 ## Why rename
 
@@ -117,7 +121,7 @@ GitHub keeps a redirect from the old repository URL after a rename, so existing 
 | Package ID `com.privdnstoggle.app` | A new package ID is a new app to Android. Every user would lose the `WRITE_SECURE_SETTINGS` grant and saved hostname and have to reinstall. The Obtainium `id` field also depends on it. |
 | Keystore alias `privdnstoggle` | The release signing key must stay the same key forever or updates stop installing over existing installs. |
 | Style name `Theme.PrivDNSToggle` | Internal identifier in `themes.xml` and `AndroidManifest.xml`; not user-visible. |
-| `privdnstoggle` logcat filters | They match the package name, which does not change. |
+| `privdnstoggle` logcat filters | Not renamed, but replaced for a separate reason: they matched no log tag. The real tags are `DnsManager`, `ShizukuHelper` and `MainActivity`. |
 | Historical text | Past `CHANGELOG.md` entries and `agent/*.md` describe what was true at the time. |
 
 ## Footprint when the rename happens
@@ -131,7 +135,7 @@ Line references are as of 2026-09-11. `README.md` is listed without line numbers
 | `settings.gradle.kts:21` | `rootProject.name`, the project name Android Studio shows. No effect on package or APK. |
 | `README.md` | Title, every mention, every URL, shields.io badge paths, Obtainium deep link `url` and `name` fields (`id` unchanged) |
 | `quick-start.md` | Name at lines 3, 106, 150, 168, 188; URLs and clone folder at lines 5, 23, 24, 31, 269 |
-| `docs/troubleshooting.md` | Title (line 1) and line 86. The `privdnstoggle` logcat filters stay. |
+| `docs/troubleshooting.md` | Title (line 1) and line 86. The logcat filters were replaced separately, see [Never changes](#never-changes). |
 | `docs/testing.md` | Line 3 name; line 75 Gradle tool-window project name |
 | `docs/website-brief.md` | Title, name, all URLs; add one line "formerly PrivDNS Toggle" so the designer recognises old references |
 | `CHANGELOG.md` | Line 3 name; new `## [Unreleased]` / `### Changed` entry: renamed to PinDNS, package ID unchanged, existing installs update in place |
@@ -165,7 +169,7 @@ Not touched in any scope: `agent/agent-rules.md`, `agent/agent-history.md`, `doc
 - `curl -sI https://github.com/mjryan253/PrivDNSToggle` returns a 301 to the new name.
 - `git remote -v` shows the new remote and `git fetch --dry-run` succeeds.
 - `grep -rn -iE 'privdns toggle|PrivDNSToggle' README.md quick-start.md docs/*.md CHANGELOG.md app/src/main/res/values/strings.xml app/src/main/kotlin settings.gradle.kts` returns only the allowed leftovers: the APK filename (if unchanged), the "formerly PrivDNS Toggle" lines, and historical CHANGELOG entries.
-- `com.privdnstoggle`, the `privdnstoggle` keystore alias and the logcat filters are unchanged everywhere.
+- `com.privdnstoggle` and the `privdnstoggle` keystore alias are unchanged everywhere.
 - Build and lint still pass with the string and Gradle-name changes. From inside the flatpak sandbox:
 
   ```sh
