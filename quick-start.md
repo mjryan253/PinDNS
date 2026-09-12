@@ -35,7 +35,7 @@ cd PinDNS
 
 Android Studio will automatically start syncing Gradle dependencies. Wait for the sync to complete (you'll see "Gradle sync finished" in the status bar at the bottom).
 
-**First time setup?** Android Studio may download Gradle 8.4 and required dependencies. This can take several minutes depending on your internet connection.
+**First time setup?** Android Studio downloads the Gradle version pinned by the wrapper (currently 9.7.1) and the required dependencies. This can take several minutes depending on your internet connection.
 
 ## Step 2: Prepare Your Android Device
 
@@ -95,7 +95,7 @@ If you see `unauthorized`, check your device screen for the USB debugging prompt
 2. Wait for the build to complete
 3. When finished, click **locate** in the notification, or navigate to:
    ```
-   app/build/outputs/apk/debug/app-debug.apk
+   builds/app/outputs/apk/debug/app-debug.apk
    ```
 4. Transfer the APK to your device (via USB, email, or cloud storage)
 5. On your device, enable **Install from unknown sources** if prompted
@@ -129,7 +129,7 @@ C:\Users\<YourUsername>\AppData\Local\Android\Sdk\platform-tools\adb.exe shell p
 You can verify the permission was granted by running:
 
 ```bash
-adb shell dumpsys package com.privdnstoggle.app | findstr WRITE_SECURE_SETTINGS
+adb shell dumpsys package com.privdnstoggle.app | grep WRITE_SECURE_SETTINGS
 ```
 
 **Windows users:** Use `findstr` instead of `grep`:
@@ -170,7 +170,7 @@ The result is the same as the ADB command: the grant persists across app updates
 3. Enter your desired DNS hostname or IP address in the input field below (e.g., `dns.nextdns.io`, `one.one.one.one`, `dns.cloudflare.com`)
 4. Tap **Save** — the app will:
    - Test the connection to port 853 (DNS-over-TLS) with a 10-second timeout
-   - Save the hostname and enable Private DNS with that hostname if successful
+   - Save the hostname if successful. Saving does not turn Private DNS on
    - Show an error message if connection fails
    - Note: Syntax validation is temporarily disabled
 5. Once saved, you can use the large toggle switch to turn Private DNS on/off
@@ -189,7 +189,7 @@ The result is the same as the ADB command: the grant persists across app updates
   - **Toggle Private DNS**: Use the large horizontal switch at the top to turn Private DNS on/off
   - **Change DNS Provider**: Enter a new hostname/IP in the input field and tap **Save**
     - Tests connectivity to the DNS provider (10-second timeout)
-    - Saves the hostname and enables Private DNS with that hostname if successful
+    - Saves the hostname if successful. Saving does not turn Private DNS on
     - Shows inline error messages if connection fails
     - Note: Syntax validation is temporarily disabled
   - **View Status**: See current Private DNS state and active hostname at the top
@@ -246,7 +246,7 @@ The result is the same as the ADB command: the grant persists across app updates
 - Check your internet connection
 - Go to **File > Settings > Build, Execution, Deployment > Gradle** and ensure "Use Gradle from" is set to the wrapper
 - Try **File > Invalidate Caches / Restart**
-- Ensure you have Java 17 installed (required by this project)
+- Any recent JDK can launch Gradle. The build pins its daemon to JDK 21 and downloads it automatically (`gradle/gradle-daemon-jvm.properties`); the code targets Java 17
 
 ### Build Fails
 

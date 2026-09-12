@@ -106,7 +106,7 @@ has a free tier; paste the hostname from your NextDNS setup page into the app an
 | **Quick Settings tile** | Tap **PinDNS Toggle** in the notification shade to toggle between your saved DNS hostname and off |
 | **In-app toggle** | A large switch at the top of the app turns Private DNS on and off and shows the current status and active hostname |
 | **Any provider** | Enter a DNS hostname or IP address, for example `dns.nextdns.io` or `one.one.one.one` |
-| **DNS connection test** | **Save** tests the connection (10 s timeout) before storing the hostname and enabling Private DNS with it (syntax validation temporarily disabled) |
+| **DNS connection test** | **Save** tests the connection (10 s timeout) before storing the hostname; use the switch or the tile to turn Private DNS on (syntax validation temporarily disabled) |
 | **Shizuku support** | Grant the required permission in-app via Shizuku, no computer needed |
 | **Lightweight** | No background services, no analytics |
 | **Dark UI** | OLED-black Material 3 interface by default; dynamic color on Android 12+ |
