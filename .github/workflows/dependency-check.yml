@@ -1,9 +1,12 @@
 name: Dependency Check
 
 on:
+  # Docs-only changes cannot alter the dependency classpath, so skip them
   pull_request:
+    paths-ignore: ['**.md', 'docs/**', 'LICENSE', '.github/FUNDING.yml']
   push:
     branches: [main]
+    paths-ignore: ['**.md', 'docs/**', 'LICENSE', '.github/FUNDING.yml']
   schedule:
     # Weekly (Monday 06:00 UTC): new CVEs appear against unchanged dependencies
     - cron: '0 6 * * 1'
