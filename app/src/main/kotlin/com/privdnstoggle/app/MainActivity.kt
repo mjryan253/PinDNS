@@ -223,7 +223,7 @@ fun DnsSettingsScreen(viewModel: DnsSettingsViewModel) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("PrivDNS Toggle") },
+                title = { Text("PinDNS") },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.surface,
                     titleContentColor = MaterialTheme.colorScheme.onSurface

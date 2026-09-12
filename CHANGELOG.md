@@ -1,6 +1,11 @@
 # Changelog
 
-All notable changes to PrivDNS Toggle will be documented in this file.
+All notable changes to PinDNS will be documented in this file.
+
+## [Unreleased]
+
+### Changed
+- **Renamed to PinDNS** - the app, repository and documentation now use the name PinDNS (formerly PrivDNS Toggle). The package ID `com.privdnstoggle.app` is unchanged, so existing installs update in place and keep their `WRITE_SECURE_SETTINGS` grant. The Quick Settings tile is now labelled "PinDNS Toggle" and release files are named `PinDNS-v<version>.apk`.
 
 ## [0.5] - 2026-09-09
 

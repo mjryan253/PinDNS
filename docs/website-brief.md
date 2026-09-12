@@ -1,29 +1,30 @@
-# PrivDNS Toggle — Website Page Brief
+# PinDNS — Website Page Brief
 
 ## Purpose of this document
 
-This is a reference for building one page on the owner's website about the PrivDNS Toggle Android app. The page should explain what the app is, who it is for, and send visitors to the GitHub repository. Nothing here needs to be copied word for word. Adapt the wording to fit the site, but keep the facts as stated and do not add claims that are not listed here.
+This is a reference for building one page on the owner's website about the PinDNS Android app. The page should explain what the app is, who it is for, and send visitors to the GitHub repository. Nothing here needs to be copied word for word. Adapt the wording to fit the site, but keep the facts as stated and do not add claims that are not listed here.
 
 The one required element is a clear link to the GitHub repo.
 
 ## Primary link
 
-**GitHub repository:** https://github.com/mjryan253/PrivDNSToggle
+**GitHub repository:** https://github.com/mjryan253/PinDNS
 
 This is the main call to action on the page. Everything else (downloads, issues, donations) is secondary.
 
 ## What the app is
 
-- **Name:** PrivDNS Toggle
+- **Name:** PinDNS
+- **Formerly:** PrivDNS Toggle (renamed 2026-09-11)
 - **Platform:** Android
 - **Package name:** `com.privdnstoggle.app`
 - **Current version:** 0.5 (a v1.0 release is targeted for Q4 2026)
 - **Status:** working, actively developed, pre-1.0
-- **License:** GNU General Public License v3.0 or later (free and open source). Full text: https://github.com/mjryan253/PrivDNSToggle/blob/main/LICENSE
+- **License:** GNU General Public License v3.0 or later (free and open source). Full text: https://github.com/mjryan253/PinDNS/blob/main/LICENSE
 
 One-line description: a minimal Android app that turns Private DNS on and off from the Quick Settings shade or from the app itself.
 
-The problem it solves: Android supports Private DNS (encrypted DNS pointed at a provider such as NextDNS, AdGuard or Cloudflare), but the switch lives several menus deep in Settings. Some networks, apps or captive portals break when Private DNS is on, so people end up toggling it often. PrivDNS Toggle puts that switch one tap away in the notification shade.
+The problem it solves: Android supports Private DNS (encrypted DNS pointed at a provider such as NextDNS, AdGuard or Cloudflare), but the switch lives several menus deep in Settings. Some networks, apps or captive portals break when Private DNS is on, so people end up toggling it often. PinDNS puts that switch one tap away in the notification shade.
 
 ## Who it is for
 
@@ -35,7 +36,7 @@ This is a niche utility for a technical audience, not a mass-market consumer app
 
 ## Key features
 
-- **Quick Settings tile.** Pull down the notification shade and tap "Private DNS" to toggle it.
+- **Quick Settings tile.** Pull down the notification shade and tap "PinDNS Toggle" to toggle it.
 - **Large in-app toggle.** A prominent on/off switch on the main screen.
 - **DNS connection test.** The app tests the entered hostname before saving it (10 second timeout).
 - **Dark, OLED-black interface.** Pure black background by default.
@@ -57,10 +58,10 @@ Writing that system value requires a permission called `WRITE_SECURE_SETTINGS`, 
 
 ## Where to get it
 
-- **GitHub Releases:** https://github.com/mjryan253/PrivDNSToggle/releases/latest
-  Release files are named `PrivDNSToggle-v<version>.apk`.
+- **GitHub Releases:** https://github.com/mjryan253/PinDNS/releases/latest
+  Release files are named `PinDNS-v<version>.apk`.
 - **Obtainium** (an Android app that installs and updates apps straight from GitHub). Direct install link:
-  https://apps.obtainium.imranr.dev/redirect?r=obtainium://app/%7B%22id%22%3A%22com.privdnstoggle.app%22%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2Fmjryan253%2FPrivDNSToggle%22%2C%22author%22%3A%22mjryan253%22%2C%22name%22%3A%22PrivDNS%20Toggle%22%7D
+  https://apps.obtainium.imranr.dev/redirect?r=obtainium://app/%7B%22id%22%3A%22com.privdnstoggle.app%22%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2Fmjryan253%2FPinDNS%22%2C%22author%22%3A%22mjryan253%22%2C%22name%22%3A%22PinDNS%22%7D
   An "Get it on Obtainium" badge image is in the repo at `docs/images/badge_obtainium.png`.
 
 The app is **not** on Google Play or F-Droid. Do not show those badges.
@@ -88,7 +89,7 @@ Subhead ideas:
 
 Owner blurb from the README, usable as-is or shortened:
 
-> I'm a single developer with over 20 years of IT experience, and PrivDNS Toggle is a side project I'm happy to give back to the community. Testing and feedback are appreciated: please open an issue with bug reports or suggestions.
+> I'm a single developer with over 20 years of IT experience, and PinDNS is a side project I'm happy to give back to the community. Testing and feedback are appreciated: please open an issue with bug reports or suggestions.
 
 ## Visual direction
 
@@ -127,15 +128,15 @@ Screenshots are in `docs/images/screenshots/`: the main screen with Private DNS 
 
 | Purpose | URL |
 |---------|-----|
-| Repository (primary) | https://github.com/mjryan253/PrivDNSToggle |
-| Latest release / download | https://github.com/mjryan253/PrivDNSToggle/releases/latest |
-| All releases | https://github.com/mjryan253/PrivDNSToggle/releases |
-| Bug reports and suggestions | https://github.com/mjryan253/PrivDNSToggle/issues |
+| Repository (primary) | https://github.com/mjryan253/PinDNS |
+| Latest release / download | https://github.com/mjryan253/PinDNS/releases/latest |
+| All releases | https://github.com/mjryan253/PinDNS/releases |
+| Bug reports and suggestions | https://github.com/mjryan253/PinDNS/issues |
 | Obtainium install | see "Where to get it" above |
 | Shizuku (third-party app used for the no-computer setup) | https://shizuku.rikka.app |
 | Donate (PayPal) | https://paypal.me/mryan351 |
-| Full README | https://github.com/mjryan253/PrivDNSToggle/blob/main/README.md |
-| Step-by-step setup guide | https://github.com/mjryan253/PrivDNSToggle/blob/main/quick-start.md |
+| Full README | https://github.com/mjryan253/PinDNS/blob/main/README.md |
+| Step-by-step setup guide | https://github.com/mjryan253/PinDNS/blob/main/quick-start.md |
 
 ## Open items for the owner
 

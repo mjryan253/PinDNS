@@ -1,4 +1,4 @@
-# Troubleshooting PrivDNS Toggle
+# Troubleshooting PinDNS
 
 If the app crashes on launch, won't deploy to your device, or doesn't apply Private DNS after granting permission, use these steps to narrow it down.
 
@@ -83,7 +83,7 @@ Replace `150` with the userId that showed `granted=false`. To list users: `adb s
 **No computer?** If [Shizuku](https://shizuku.rikka.app) is installed and running, open the app, expand **Setup Instructions**, and tap **Grant with Shizuku** instead of running the ADB command. Notes:
 
 - Shizuku must be started again after each reboot unless the device is rooted. If the app says "Shizuku is not running", start it in the Shizuku app and tap the button again.
-- If you chose "Deny and don't ask again" in the Shizuku dialog, allow PrivDNS Toggle in Shizuku's list of authorized apps, then tap the button again.
+- If you chose "Deny and don't ask again" in the Shizuku dialog, allow PinDNS in Shizuku's list of authorized apps, then tap the button again.
 - The Shizuku grant targets the user/profile the app is running in, so the `--user` step above is not needed with Shizuku.
 
 ---
