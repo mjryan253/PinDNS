@@ -95,6 +95,8 @@ Desktop.ini
 
 # Kotlin
 *.kt.swp
+# Kotlin compiler session directory (created by Gradle builds)
+.kotlin/
 
 # Android Studio will place build artifacts here
 /android/app/debug

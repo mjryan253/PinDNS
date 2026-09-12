@@ -91,6 +91,14 @@ This runs the same grant on-device. See
 2. Tap the pencil/edit icon to edit tiles
 3. Find **PinDNS Toggle** and drag it into your active tiles
 
+### Optional: Pick a DNS Provider
+
+Private DNS needs a DNS-over-TLS hostname. Any provider works, for example `one.one.one.one` (Cloudflare)
+or `dns.adguard.com`. If you want filtering and a hostname of your own, [NextDNS](https://nextdns.io/?from=skn4pmg9)
+has a free tier; paste the hostname from your NextDNS setup page into the app and tap **Save**.
+
+> The NextDNS link above is a referral link. Signing up through it supports this project at no extra cost to you.
+
 ## Features
 
 | Feature | What it does |
@@ -211,7 +219,7 @@ PinDNS is free software, licensed under the GNU General Public License v3.0 or l
 PinDNS changes a system setting on your own device. It does not run a DNS service, proxy or VPN,
 and it does not choose a provider for you: the hostname you enter is written to Android's Private DNS
 setting as-is, so pick a provider you trust. The project is not affiliated with Google, Samsung, Shizuku
-or any DNS provider.
+or any DNS provider. The NextDNS link under Setup is a referral link; the app works with any provider.
 
 ## Table of Contents
 
@@ -223,6 +231,7 @@ or any DNS provider.
   - [Grant the Permission (one time)](#grant-the-permission-one-time)
   - [No Computer? Use Shizuku](#no-computer-use-shizuku)
   - [Add the Quick Settings Tile](#add-the-quick-settings-tile)
+  - [Optional: Pick a DNS Provider](#optional-pick-a-dns-provider)
 - [Features](#features)
 - [How It Works](#how-it-works)
 - [Requirements](#requirements)

@@ -72,6 +72,10 @@ Optional "verify your download" detail, if the page has room for it: release APK
 5344da60b330aca1109d26bac272f437d72c9a1a456aa1c9b7ea9c587ce19289
 ```
 
+## Optional provider suggestion
+
+The page may include one sentence pointing readers who do not yet have a DNS provider to NextDNS, using this referral link: https://nextdns.io/?from=skn4pmg9. If the link appears, label it as a referral link right next to it, for example: "Referral link. Signing up through it supports the project at no extra cost to you." The app works with any provider; do not present NextDNS as required.
+
 ## Tone and messaging
 
 Plain, technical, honest. No hype, no superlatives, no "revolutionary". The README speaks in the first person as a single developer giving a side project back to the community. The page can echo that.
@@ -134,6 +138,7 @@ Screenshots are in `docs/images/screenshots/`: the main screen with Private DNS 
 | Bug reports and suggestions | https://github.com/mjryan253/PinDNS/issues |
 | Obtainium install | see "Where to get it" above |
 | Shizuku (third-party app used for the no-computer setup) | https://shizuku.rikka.app |
+| NextDNS (optional provider, referral link) | https://nextdns.io/?from=skn4pmg9 |
 | Donate (PayPal) | https://paypal.me/mryan351 |
 | Full README | https://github.com/mjryan253/PinDNS/blob/main/README.md |
 | Step-by-step setup guide | https://github.com/mjryan253/PinDNS/blob/main/quick-start.md |
