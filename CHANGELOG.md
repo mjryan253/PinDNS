@@ -2,10 +2,15 @@
 
 All notable changes to PinDNS will be documented in this file.
 
-## [Unreleased]
+## [0.6] - 2026-09-12
 
 ### Changed
 - **Renamed to PinDNS** - the app, repository and documentation now use the name PinDNS (formerly PrivDNS Toggle). The package ID `com.privdnstoggle.app` is unchanged, so existing installs update in place and keep their `WRITE_SECURE_SETTINGS` grant. The Quick Settings tile is now labelled "PinDNS Toggle" and release files are named `PinDNS-v<version>.apk`.
+
+### Documentation
+- **Project website** - PinDNS now has a home at [pindns.xyz](https://pindns.xyz).
+- **Pick a DNS Provider** - the README setup section now has an optional step pointing at NextDNS, labelled as a referral link. Any Private DNS provider still works; NextDNS is not required.
+- **Corrections** - build output paths, the Gradle and JDK versions, the logcat filter tags and three places that claimed Save turns Private DNS on (it only tests the connection and stores the hostname) now match the code.
 
 ## [0.5] - 2026-09-09
 

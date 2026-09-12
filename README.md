@@ -5,6 +5,7 @@
 <h1>PinDNS</h1>
 <br/>
 
+[![Website](https://img.shields.io/badge/Website-pindns.xyz-8A2BE2?style=for-the-badge)](https://pindns.xyz)
 [![Latest release](https://img.shields.io/github/v/release/mjryan253/PinDNS?style=for-the-badge&color=green)](https://github.com/mjryan253/PinDNS/releases/latest)
 [![Downloads](https://img.shields.io/github/downloads/mjryan253/PinDNS/total?style=for-the-badge&color=lightgreen)](https://github.com/mjryan253/PinDNS/releases)
 [![License](https://img.shields.io/badge/License-GPL--3.0-blue?style=for-the-badge)](LICENSE)
