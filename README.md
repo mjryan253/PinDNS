@@ -20,6 +20,16 @@ PrivDNS Toggle is a minimal Android app that turns Private DNS on and off from t
 from the app itself. It writes Android's own Private DNS setting directly: no root, no background services,
 no analytics.
 
+## Screenshots
+
+| Private DNS off | Private DNS on |
+|:---:|:---:|
+| <img src="docs/images/screenshots/screen_off.png" alt="PrivDNS Toggle main screen with Private DNS off: the large switch sits at OFF above the DNS provider field and Save button" width="300"> | <img src="docs/images/screenshots/screen_on.png" alt="PrivDNS Toggle main screen with Private DNS active: the switch is green and set to ON, with the saved hostname dns.adguard.com shown above it" width="300"> |
+
+<img src="docs/images/screenshots/quick_settings.png" alt="Android Quick Settings tile panel with the Private DNS funnel tile lit up as active in the bottom right corner" width="615">
+
+The Quick Settings tile, bottom right, shown active. One tap toggles it.
+
 ## Download
 
 > [!NOTE]
@@ -206,6 +216,7 @@ or any DNS provider.
 ## Table of Contents
 
 - [Intro](#intro)
+- [Screenshots](#screenshots)
 - [Download](#download)
   - [Verifying the APK](#verifying-the-apk)
 - [Setup](#setup)

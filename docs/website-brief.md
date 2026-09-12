@@ -113,7 +113,7 @@ Asset paths in the repo:
 - `app/src/main/res/drawable-xxxhdpi/ic_dns.png` — the Quick Settings tile glyph
 - `docs/images/badge_obtainium.png` — "Get it on Obtainium" badge
 
-There are no screenshots in the repository. See "Open items" below.
+Screenshots are in `docs/images/screenshots/`: the main screen with Private DNS off and on, and the Quick Settings tile.
 
 ## Do not claim
 
@@ -139,5 +139,4 @@ There are no screenshots in the repository. See "Open items" below.
 
 ## Open items for the owner
 
-- **Screenshots.** None exist in the repo. Capture the main screen (toggle on and off) and the Quick Settings tile on a device, and pass them to the designer.
 - **Donation link.** Decide whether the PayPal link belongs on the page.
