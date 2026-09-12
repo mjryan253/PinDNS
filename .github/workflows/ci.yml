@@ -1,9 +1,12 @@
 name: CI
 
 on:
+  # Docs-only changes cannot affect the build, so skip them
   pull_request:
+    paths-ignore: ['**.md', 'docs/**', 'LICENSE', '.github/FUNDING.yml']
   push:
     branches: [main]
+    paths-ignore: ['**.md', 'docs/**', 'LICENSE', '.github/FUNDING.yml']
   workflow_dispatch:
 
 permissions:
