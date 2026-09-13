@@ -6,6 +6,8 @@ This is a reference for building one page on the owner's website about the PinDN
 
 The one required element is a clear link to the GitHub repo.
 
+**Where the page lives:** the project's domain is `pindns.xyz`, which redirects to this page at https://honesttech.org/software/privdns-toggle. Publish `pindns.xyz` as the project's address everywhere; it is the one place to repoint if the page ever moves.
+
 ## Primary link
 
 **GitHub repository:** https://github.com/mjryan253/PinDNS
@@ -133,6 +135,7 @@ Screenshots are in `docs/images/screenshots/`: the main screen with Private DNS 
 | Purpose | URL |
 |---------|-----|
 | Repository (primary) | https://github.com/mjryan253/PinDNS |
+| Project site (redirects to this page) | https://pindns.xyz |
 | Latest release / download | https://github.com/mjryan253/PinDNS/releases/latest |
 | All releases | https://github.com/mjryan253/PinDNS/releases |
 | Bug reports and suggestions | https://github.com/mjryan253/PinDNS/issues |

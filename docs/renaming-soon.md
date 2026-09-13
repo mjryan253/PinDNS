@@ -11,7 +11,8 @@ Record of the naming work done on 2026-09-11 and of the rename itself, applied o
 - Repository is now `mjryan253/PinDNS`; GitHub redirects the old URL. The repo description was updated.
 - Release APKs are now named `PinDNS-v<version>.apk`.
 - Unchanged, as planned: package ID `com.privdnstoggle.app`, keystore alias `privdnstoggle`, style `Theme.PrivDNSToggle`. Existing installs update in place and keep their `WRITE_SECURE_SETTINGS` grant.
-- Still open: register the free `pindns.*` domains, and run a manual USPTO TESS search before any store listing. Screenshots in `docs/images/screenshots/` still show the old name and need retaking.
+- Domain: **pindns.xyz**, registered 2026-09-12 and redirecting to https://honesttech.org/software/privdns-toggle. It is published as the project's address, so the redirect is the only thing to repoint if the page moves.
+- Still open: run a manual USPTO TESS search before any store listing. Screenshots in `docs/images/screenshots/` still show the old name and need retaking.
 
 ## Why rename
 
