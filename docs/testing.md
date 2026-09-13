@@ -137,4 +137,3 @@ Reports land under `builds/app/reports/` (this project relocates Gradle output t
 
 - [README.md](../README.md) — project overview and setup.
 - [quick-start.md](../quick-start.md) — build, install, and one-time ADB permission.
-- [plan-simple-component-tests.md](plan-simple-component-tests.md) — plan and rationale for the current tests.

@@ -30,7 +30,7 @@
         errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="build.gradle.kts"
-            line="96"
+            line="89"
             column="20"/>
     </issue>
 
@@ -41,7 +41,7 @@
         errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="build.gradle.kts"
-            line="97"
+            line="90"
             column="20"/>
     </issue>
 
@@ -52,7 +52,7 @@
         errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="build.gradle.kts"
-            line="98"
+            line="91"
             column="20"/>
     </issue>
 
@@ -63,7 +63,7 @@
         errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="build.gradle.kts"
-            line="99"
+            line="92"
             column="20"/>
     </issue>
 
@@ -74,9 +74,10 @@
         errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="build.gradle.kts"
-            line="100"
+            line="93"
             column="20"/>
     </issue>
+
 
     <issue
         id="ModifierParameter"

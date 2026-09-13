@@ -2,6 +2,11 @@
 
 The app includes a built-in debug logging system that captures detailed information about DNS operations, validation, connection tests, and any errors that occur. This guide explains how to use the debug logs to diagnose issues.
 
+> **Debug builds only.** The debug menu is compiled out of release builds, so it is not present in the
+> APKs published on GitHub or Obtainium. To use it, build and install a debug APK yourself with
+> `./gradlew assembleDebug`. On a release build, use the `adb logcat` recipe under
+> [Combining with logcat](#combining-with-logcat) instead.
+
 ---
 
 ## Accessing the Debug Menu
@@ -28,7 +33,7 @@ The debug logs capture:
 
 Each log entry includes:
 - **Timestamp:** `[HH:mm:ss.SSS]` format (e.g., `[14:23:45.123]`)
-- **Tag:** Component name (`DnsManager` or `MainActivity`)
+- **Tag:** Component name (`DnsManager`, `MainActivity` or `ShizukuHelper`)
 - **Message:** Description of what's happening
 - **Stack traces:** Full exception details when errors occur
 
@@ -238,7 +243,8 @@ The debug menu logs provide app-level context, while logcat provides system-leve
 
 **Debug button not visible:**
 - Scroll to the very bottom of the main screen
-- The "Show Debug" / "Hide Debug" button is always visible at the bottom
+- The "Show Debug" / "Hide Debug" button sits at the bottom of the main screen in debug builds
+- If it is missing entirely, you are running a release build, which has no debug menu
 
 **Debug menu not showing logs:**
 - Ensure debug mode is enabled (tap "Show Debug" button)

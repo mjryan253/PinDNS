@@ -17,10 +17,10 @@ This is the main call to action on the page. Everything else (downloads, issues,
 ## What the app is
 
 - **Name:** PinDNS
-- **Formerly:** PrivDNS Toggle (renamed 2026-09-11)
+- **Formerly:** PrivDNS Toggle (renamed 2026-09-12)
 - **Platform:** Android
 - **Package name:** `com.privdnstoggle.app`
-- **Current version:** 0.5 (a v1.0 release is targeted for Q4 2026)
+- **Current version:** 0.6 (a v1.0 release is targeted for Q4 2026)
 - **Status:** working, actively developed, pre-1.0
 - **License:** GNU General Public License v3.0 or later (free and open source). Full text: https://github.com/mjryan253/PinDNS/blob/main/LICENSE
 
