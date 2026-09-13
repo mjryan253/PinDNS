@@ -103,5 +103,14 @@ Desktop.ini
 /android/app/profile
 /android/app/release
 
-# Cursor plans (local planning artifacts)
-.cursor/plans/
+# Cursor local state
+.cursor/
+
+# Icon generator output - regenerate with icon-gen/convert_icon.py, copy into app/src/main/res/
+icon-gen/output/
+
+# AI agent scaffolding and working notes - local only, not part of the shipped project
+/CLAUDE.md
+/EXAMPLES.md
+/agent/
+/docs/fdroid-submission.md

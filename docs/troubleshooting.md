@@ -51,7 +51,7 @@ With the device connected over USB and USB debugging enabled:
 
 Sharing the **full stack trace** (from "FATAL EXCEPTION" down to the last "Caused by") is the fastest way to get a precise fix.
 
-**Known crash (v0.3 release):** If you see `NoSuchMethodError: ... KeyframesSpec$KeyframeEntity; ... at(Ljava/lang/Object;I)...`, the app was built with Compose BOM 2024.01.00, which has a Material3 vs animation-core mismatch. Rebuild the app from source with the current repo (BOM set to 2023.10.01) and install that build, or wait for a release that includes the fix.
+**Historical crash (v0.3 only, fixed since v0.4):** If you are still on v0.3 and see `NoSuchMethodError: ... KeyframesSpec$KeyframeEntity; ... at(Ljava/lang/Object;I)...`, the app was built with Compose BOM 2024.01.00, which has a Material3 vs animation-core mismatch. Rebuild the app from source with the current repo (BOM set to 2023.10.01) and install that build, or wait for a release that includes the fix.
 
 ---
 
@@ -129,7 +129,7 @@ Samsung Galaxy S21+ (and other Samsung devices) may crash when setting custom DN
 - Samsung's implementation of `Settings.Global` may have additional restrictions or validation
 
 **Debugging Steps:**
-1. **Use the Debug Menu:** The app now includes a "Debug Logs" section at the bottom. Expand it before attempting to save a custom DNS value. The logs will show:
+1. **Use the Debug Menu (debug builds only):** Debug builds include a "Debug Logs" section at the bottom of the main screen. It is compiled out of the release APKs published on GitHub and Obtainium, so if you do not see it, skip to step 2. Expand it before attempting to save a custom DNS value. The logs will show:
    - The exact hostname being saved
    - Which function is being called (`enableDns`, `saveHostname`, etc.)
    - The exact exception type and message if a crash occurs

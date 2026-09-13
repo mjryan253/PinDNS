@@ -8,7 +8,7 @@
 [![Website](https://img.shields.io/badge/Website-pindns.xyz-8A2BE2?style=for-the-badge)](https://pindns.xyz)
 [![Latest release](https://img.shields.io/github/v/release/mjryan253/PinDNS?style=for-the-badge&color=green)](https://github.com/mjryan253/PinDNS/releases/latest)
 [![Downloads](https://img.shields.io/github/downloads/mjryan253/PinDNS/total?style=for-the-badge&color=lightgreen)](https://github.com/mjryan253/PinDNS/releases)
-[![License](https://img.shields.io/badge/License-GPL--3.0-blue?style=for-the-badge)](LICENSE)
+[![License](https://img.shields.io/badge/License-GPL--3.0--or--later-blue?style=for-the-badge)](LICENSE)
 [![CI](https://img.shields.io/github/actions/workflow/status/mjryan253/PinDNS/ci.yml?style=for-the-badge&label=CI)](https://github.com/mjryan253/PinDNS/actions/workflows/ci.yml)
 [![Dependency Check](https://img.shields.io/github/actions/workflow/status/mjryan253/PinDNS/dependency-check.yml?style=for-the-badge&label=Dependency%20Check)](https://github.com/mjryan253/PinDNS/actions/workflows/dependency-check.yml)
 [![Android 9+](https://img.shields.io/badge/Android-9%2B%20%28API%2028%29-3DDC84?style=for-the-badge&logo=android&logoColor=white)](#requirements)
@@ -163,8 +163,8 @@ Output: `builds/app/outputs/apk/debug/` (this project relocates Gradle output to
 | [docs/testing.md](docs/testing.md) | Unit tests, how to run them, continuous integration |
 | [docs/debugging-with-logs.md](docs/debugging-with-logs.md) | Using the built-in debug menu to diagnose issues |
 | [docs/troubleshooting.md](docs/troubleshooting.md) | Common issues and solutions |
-| [docs/original-plan-idea.md](docs/original-plan-idea.md) | Initial design notes |
-| [agent/agent-history.md](agent/agent-history.md) | Development history |
+| [docs/release-workflow.md](docs/release-workflow.md) | How releases are built, signed and published |
+| [docs/backlog.md](docs/backlog.md) | Known work that is understood but not yet scheduled |
 
 ## Contributing
 

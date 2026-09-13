@@ -268,4 +268,3 @@ The result is the same as the ADB command: the grant persists across app updates
 
 - **Repository:** [https://github.com/mjryan253/PinDNS](https://github.com/mjryan253/PinDNS)
 - See the main [README.md](README.md) for technical details and how the app works
-- Check [docs/original-plan-idea.md](docs/original-plan-idea.md) for the original design concept
